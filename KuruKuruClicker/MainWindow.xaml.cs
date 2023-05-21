@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Runtime.CompilerServices;
 using System.Linq;
 using System.IO;
+using System.Diagnostics;
 
 namespace KuruKuruClicker
 {
@@ -146,6 +147,30 @@ namespace KuruKuruClicker
                 player.Play();
             }
             
+        }
+
+        private void TwitterGif_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+        private void SteamKoks_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+        private void GitHubRepoKoks_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+        private void GitHubRepoOriginal_RequestNavigate_1(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }

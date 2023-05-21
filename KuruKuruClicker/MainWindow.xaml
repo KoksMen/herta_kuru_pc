@@ -23,12 +23,13 @@
               >
             <StackPanel Orientation="Vertical">
                 <TextBlock
-                Text="Welcome to Hera Kuru Kururing"
+                Text="Welcome to Hetra Kuru Kururing"
                 HorizontalAlignment="Center"
                 Foreground="White"
                 FontWeight="Bold"
                 FontSize="25"
                 />
+                
                 <TextBlock
                 Text="The website for Herta, the (annoying)  cutest genius Honkai:  Star Rail character out there.  "
                 HorizontalAlignment="Center"
@@ -111,12 +112,17 @@
                 <TextBlock Text="Herta gif made by:"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>
-                    <Hyperlink NavigateUri="https://twitter.com/Seseren_kr" TargetName="_blank">
+                    <Hyperlink NavigateUri="https://twitter.com/Seseren_kr" TargetName="_blank" RequestNavigate="TwitterGif_RequestNavigate">
                         <TextBlock>
                             <InlineUIContainer>
-                                <Image/>
+                                <Image Height="32"
+                                       Width="32"
+                                       Source="icons/twitter.png"
+                                       />
                             </InlineUIContainer>
-                            <Run Text="@Seseren_kr" />
+                            <Run Text="@Seseren_kr" 
+                                 BaselineAlignment="Center"
+                                 />
                         </TextBlock>
                     </Hyperlink>
                 </TextBlock>
@@ -125,12 +131,17 @@
                 <TextBlock Text="Herta pc version made by:"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>
-                    <Hyperlink NavigateUri="https://steamcommunity.com/id/KoksMen/" TargetName="_blank">
+                    <Hyperlink NavigateUri="https://steamcommunity.com/id/KoksMen/" TargetName="_blank" RequestNavigate="SteamKoks_RequestNavigate">
                         <TextBlock>
                             <InlineUIContainer>
-                                <Image/>
+                                <Image Height="32"
+                                       Width="32"
+                                       Source="icons/steam.png"
+                                       />
                             </InlineUIContainer>
-                            <Run Text="@KoksMen" />
+                            <Run Text="@KoksMen" 
+                                 BaselineAlignment="Center"
+                                 />
                         </TextBlock>
                     </Hyperlink>
                 </TextBlock>
@@ -139,12 +150,17 @@
                 <TextBlock Text="You can check out pc version the GitHub repository here:"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>
-                    <Hyperlink NavigateUri="https://github.com/KoksMen/herta_kuru_pc" TargetName="_blank">
+                    <Hyperlink NavigateUri="https://github.com/KoksMen/herta_kuru_pc" TargetName="_blank" RequestNavigate="GitHubRepoKoks_RequestNavigate">
                         <TextBlock>
                             <InlineUIContainer>
-                                <Image/>
+                                <Image Height="32"
+                                       Width="32"
+                                       Source="icons/github.png"
+                                       />
                             </InlineUIContainer>
-                            <Run Text="herta_kuru_pc repo" />
+                            <Run Text="herta_kuru_pc repo" 
+                                 BaselineAlignment="Center"
+                                 />
                         </TextBlock>
                     </Hyperlink>
                 </TextBlock>
@@ -153,12 +169,17 @@
                 <TextBlock Text="You can check out original web version the GitHub repository here:"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>
-                    <Hyperlink NavigateUri="https://github.com/duiqt/herta.kuru" TargetName="_blank">
+                    <Hyperlink NavigateUri="https://github.com/duiqt/herta.kuru" TargetName="_blank" RequestNavigate="GitHubRepoOriginal_RequestNavigate_1">
                         <TextBlock>
                             <InlineUIContainer>
-                                <Image/>
+                                <Image Height="32"
+                                       Width="32"
+                                       Source="icons/github.png"
+                                       />
                             </InlineUIContainer>
-                            <Run Text="herta_kuru repo" />
+                            <Run Text="herta_kuru repo" 
+                                 BaselineAlignment="Center"
+                                 />
                         </TextBlock>
                     </Hyperlink>
                 </TextBlock>
