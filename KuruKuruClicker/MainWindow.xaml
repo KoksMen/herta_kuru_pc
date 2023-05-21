@@ -29,7 +29,22 @@
                 FontWeight="Bold"
                 FontSize="25"
                 />
-                
+
+                <Separator Width="640" Height="1">
+                    <Separator.Style>
+                        <Style TargetType="Separator">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Separator">
+                                        <Rectangle Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Stroke="White" StrokeDashArray="3 2" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Separator.Style>
+                </Separator>
+
+
                 <TextBlock
                 Text="The website for Herta, the (annoying)  cutest genius Honkai:  Star Rail character out there.  "
                 HorizontalAlignment="Center"
@@ -83,8 +98,22 @@
                         </Button.Resources>
                         
                     </Button>
-                    
-                    
+
+                    <Separator Width="640" Height="1">
+                        <Separator.Style>
+                            <Style TargetType="Separator">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Separator">
+                                            <Rectangle Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Stroke="White" StrokeDashArray="3 2" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Separator.Style>
+                    </Separator>
+
+
                 </StackPanel>
             </StackPanel>
             
