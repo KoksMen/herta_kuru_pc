@@ -139,7 +139,7 @@
                 <TextBlock Text="You can check out pc version the GitHub repository here:"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>
-                    <Hyperlink NavigateUri="https://github.com/duiqt/herta.kuru" TargetName="_blank">
+                    <Hyperlink NavigateUri="https://github.com/KoksMen/herta_kuru_pc" TargetName="_blank">
                         <TextBlock>
                             <InlineUIContainer>
                                 <Image/>
