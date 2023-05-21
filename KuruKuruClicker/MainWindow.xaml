@@ -23,7 +23,7 @@
               >
             <StackPanel Orientation="Vertical">
                 <TextBlock
-                Text="Welcome to Hetra Kuru Kururing"
+                Text="Welcome to Herta Kuru Kururing"
                 HorizontalAlignment="Center"
                 Foreground="White"
                 FontWeight="Bold"
