@@ -81,14 +81,21 @@ namespace KuruKuruClicker
 
             DoubleAnimation hertaMoveAnimation = new DoubleAnimation
             {
-                To =  -500,
+                To = -500,
                 Duration = TimeSpan.FromSeconds(1),
             };
 
             TranslateTransform hertaTransformAnimation = hertaImageElement.RenderTransform as TranslateTransform;
             hertaTransformAnimation.BeginAnimation(TranslateTransform.XProperty, hertaMoveAnimation);
-        }
 
+            hertaTransformAnimation.Changed += (s, e) =>
+            {
+                if (hertaTransformAnimation.X == -500)
+                {
+                    HertaShowerGrid.Children.Remove(hertaImageElement);
+                }
+            };
+        }
 
         string[] hertaAudio = new string[3]
         {
