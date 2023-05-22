@@ -12,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Linq;
 using System.IO;
 using System.Diagnostics;
+using System.Windows.Media.Media3D;
 
 namespace KuruKuruClicker
 {
@@ -60,11 +61,8 @@ namespace KuruKuruClicker
 
         private void AnimateHerta()
         {
-            double squishButtonBottom = squishButton.TransformToAncestor(HertaShowerGrid).Transform(new Point(0, squishButton.ActualHeight)).Y;
-
             Random random = new Random();
             int randomIndex = random.Next(1, 3);
-
 
             Image hertaImageElement = new Image
             {
@@ -83,20 +81,14 @@ namespace KuruKuruClicker
 
             DoubleAnimation hertaMoveAnimation = new DoubleAnimation
             {
-                To =  - 500,
+                To =  -500,
                 Duration = TimeSpan.FromSeconds(1),
             };
 
             TranslateTransform hertaTransformAnimation = hertaImageElement.RenderTransform as TranslateTransform;
             hertaTransformAnimation.BeginAnimation(TranslateTransform.XProperty, hertaMoveAnimation);
-
-            hertaMoveAnimation.Completed += (s, e) =>
-            {
-                HertaShowerGrid.Children.Remove(hertaImageElement);
-                hertaImageElement = null;
-                hertaImage = null;
-            };
         }
+
 
         string[] hertaAudio = new string[3]
         {
@@ -129,7 +121,6 @@ namespace KuruKuruClicker
             }
             else
             {
-                
                 MediaElement player = new MediaElement();
                 player.LoadedBehavior = MediaState.Manual;
                 player.Visibility = Visibility.Hidden;
@@ -146,7 +137,6 @@ namespace KuruKuruClicker
 
                 player.Play();
             }
-            
         }
 
         private void TwitterGif_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
