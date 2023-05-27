@@ -13,6 +13,7 @@ using System.Linq;
 using System.IO;
 using System.Diagnostics;
 using System.Windows.Media.Media3D;
+using System.Windows.Shapes;
 
 namespace KuruKuruClicker
 {
@@ -34,14 +35,59 @@ namespace KuruKuruClicker
 
         private bool firstSquish = true;
 
-
         public MainWindow()
         {
             InitializeComponent();
 
             DataContext = this;
 
+            LoadFiles();
+
             Count = 0;
+        }
+
+        private static void LoadFiles()
+        {
+            try
+            {
+                if (!Directory.Exists(hertaAudioFolder))
+                {
+                    Directory.CreateDirectory(hertaAudioFolder);
+                }
+                string[] files = Directory.GetFiles(hertaAudioFolder);
+                if (!files.Contains("kuru1.wav") || !files.Contains("kuru2.wav") || !files.Contains("kuruto.wav"))
+                {
+                    using (Stream waveFile = Properties.Resources.kuruto)
+                    {
+                        using (var fileStream = new FileStream(hertaKuruToAudio, FileMode.Create, FileAccess.Write))
+                        {
+                            waveFile.CopyTo(fileStream);
+                        }
+                    }
+
+                    using (Stream waveFile = Properties.Resources.kuru1)
+                    {
+                        using (var fileStream = new FileStream(hertaKuruRingAudio, FileMode.Create, FileAccess.Write))
+                        {
+                            waveFile.CopyTo(fileStream);
+                        }
+                    }
+
+                    using (Stream waveFile = Properties.Resources.kuru2)
+                    {
+                        using (var fileStream = new FileStream(hertaKuruKuruAudio, FileMode.Create, FileAccess.Write))
+                        {
+                            waveFile.CopyTo(fileStream);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -97,52 +143,59 @@ namespace KuruKuruClicker
             };
         }
 
-        string[] hertaAudio = new string[3]
-        {
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audio", "kuruto.wav"),
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audio", "kuru1.wav"),
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "audio", "kuru2.wav")
-        };
+        static string hertaAudioFolder = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\KuruKuruClicker\audio";
+        static string hertaKuruToAudio = System.IO.Path.Combine(hertaAudioFolder, "kuruto.wav");
+        static string hertaKuruRingAudio = System.IO.Path.Combine(hertaAudioFolder, "kuru1.wav");
+        static string hertaKuruKuruAudio = System.IO.Path.Combine(hertaAudioFolder, "kuru2.wav");
+
+        static string[] hertaAudio = new string[3] { hertaKuruToAudio, hertaKuruRingAudio, hertaKuruKuruAudio };
 
         private void PlayKuru()
         {
-            if (firstSquish)
+            try
             {
-                MediaElement player = new MediaElement();
-                player.LoadedBehavior = MediaState.Manual;
-                player.Visibility = Visibility.Hidden;
-                player.Source = new Uri(hertaAudio[0]);
-
-                HertaShowerGrid.Children.Add(player);
-                Grid.SetZIndex(player, -2);
-
-                player.MediaEnded += (sender, e) =>
+                if (firstSquish)
                 {
-                    HertaShowerGrid.Children.Remove(player);
-                    player = null;
-                };
+                    MediaElement player = new MediaElement();
+                    player.LoadedBehavior = MediaState.Manual;
+                    player.Visibility = Visibility.Hidden;
+                    player.Source = new Uri(hertaAudio[0]);
 
-                player.Play();
+                    HertaShowerGrid.Children.Add(player);
+                    Grid.SetZIndex(player, -2);
 
-                firstSquish = false;
+                    player.MediaEnded += (sender, e) =>
+                    {
+                        HertaShowerGrid.Children.Remove(player);
+                        player = null;
+                    };
+
+                    player.Play();
+
+                    firstSquish = false;
+                }
+                else
+                {
+                    MediaElement player = new MediaElement();
+                    player.LoadedBehavior = MediaState.Manual;
+                    player.Visibility = Visibility.Hidden;
+                    player.Source = new Uri(hertaAudio[(new Random()).Next(0, 3)]);
+
+                    HertaShowerGrid.Children.Add(player);
+                    Grid.SetZIndex(player, -2);
+
+                    player.MediaEnded += (sender, e) =>
+                    {
+                        HertaShowerGrid.Children.Remove(player);
+                        player = null;
+                    };
+
+                    player.Play();
+                }
             }
-            else
+            catch (Exception e)
             {
-                MediaElement player = new MediaElement();
-                player.LoadedBehavior = MediaState.Manual;
-                player.Visibility = Visibility.Hidden;
-                player.Source = new Uri(hertaAudio[(new Random()).Next(0,3)]);
-
-                HertaShowerGrid.Children.Add(player);
-                Grid.SetZIndex(player, -2);
-
-                player.MediaEnded += (sender, e) =>
-                {
-                    HertaShowerGrid.Children.Remove(player);
-                    player = null;
-                };
-
-                player.Play();
+                MessageBox.Show(e.Message);
             }
         }
 
