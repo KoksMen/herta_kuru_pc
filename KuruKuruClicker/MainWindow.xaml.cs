@@ -44,6 +44,11 @@ namespace KuruKuruClicker
             LoadFiles();
 
             Count = 0;
+
+
+            var hertaImage = new BitmapImage(new Uri($"img/hertaa_github.gif", UriKind.Relative));
+            ImageBehavior.SetAnimatedSource(HertaBackgroundGif, hertaImage);
+
         }
 
         private static void LoadFiles()
@@ -115,7 +120,8 @@ namespace KuruKuruClicker
                 Width = 200,
                 Height = 200,
                 RenderTransform = new TranslateTransform(500, 0),
-                RenderTransformOrigin = new Point(0.5, 0.5)
+                RenderTransformOrigin = new Point(0.5, 0.5),
+                VerticalAlignment = VerticalAlignment.Bottom
             };
 
             var hertaImage = new BitmapImage(new Uri($"img/hertaa{randomIndex}.gif", UriKind.Relative));
