@@ -8,7 +8,7 @@
         Title="Kuru Kuru~" 
         Height="450" 
         Width="800"
-        
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         >
     <Grid>
