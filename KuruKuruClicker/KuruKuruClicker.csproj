@@ -346,6 +346,12 @@
     <Content Include="audio\kuruto.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="img\favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\hertaa_github.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="hertaa1-removebg-preview.ico" />
     <Resource Include="icons\twitter.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

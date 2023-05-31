@@ -44,6 +44,11 @@ namespace KuruKuruClicker
             LoadFiles();
 
             Count = 0;
+
+
+            var hertaImage = new BitmapImage(new Uri($"img/hertaa_github.gif", UriKind.Relative));
+            ImageBehavior.SetAnimatedSource(HertaBackgroundGif, hertaImage);
+
         }
 
         private static void LoadFiles()
