@@ -50,11 +50,10 @@ namespace KuruKuruClicker
 
             Count = 0;
 
-            SetLanguageEnglish();
-
             var hertaImage = new BitmapImage(new Uri($"img/hertaa_github.gif", UriKind.Relative));
             ImageBehavior.SetAnimatedSource(HertaBackgroundGif, hertaImage);
 
+            SetLanguageEnglish();
         }
 
         private static void LoadFiles()
@@ -212,29 +211,7 @@ namespace KuruKuruClicker
             }
         }
 
-        private void TwitterGif_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-        }
-
-        private void SteamKoks_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-        }
-
-        private void GitHubRepoKoks_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-        }
-
-        private void GitHubRepoOriginal_RequestNavigate_1(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-        }
+        
 
         private void languageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -268,13 +245,18 @@ namespace KuruKuruClicker
             
         }
 
+        string[] squishInfoTexts; 
         string[] squishButtonTexts; 
         private void SetLanguageEnglish()
         {
             welcometb.Text = "Welcome to Herta Kuru Kururing";
             siteInfoTB.Text = $"The website for Herta, the {"(annoying)"} cutest genius Honkai:  Star Rail character out there.  ";
-            //TODO dynamic text
-            squishInfoTB.Text = "The kuru~ has been squished";
+            squishInfoTexts = new string[2]
+            {
+                "The kuru~ has been squished for",
+                "Herta has been kuru~ed for",
+            };
+            squishInfoTB.Text = squishInfoTexts[0];
             timesTB.Text = "times";
             squishButtonTexts = new string[2]
             {
@@ -282,14 +264,22 @@ namespace KuruKuruClicker
                 "Kuru kuru~!",
             };
             squishButton.Content = squishButtonTexts[0];
+            gifMadeTB.Text = "Herta GIF:";
+            pcAuthorTB.Text = "PC Verion Author:";
+            pcRepoTB.Text = "GitHub Repo PC:";
+            siteRepoTB.Text = "GitHub Repo Site:";
         }
 
         private void SetLanguageChinise()
         {
             welcometb.Text = "欢迎来到赫塔*库鲁*库鲁林";
             siteInfoTB.Text = "赫塔的网站,最可爱的天才韩凯:星轨人物在那里.  ";
-            //TODO dynamic text
-            squishInfoTB.Text = "库鲁~被压扁了";
+            squishInfoTexts = new string[2]
+            {
+                "库鲁~已经被压扁了。",
+                "赫塔已经被库鲁-埃德了。",
+            };
+            squishInfoTB.Text = squishInfoTexts[0];
             timesTB.Text = "时代";
             squishButtonTexts = new string[2]
             {
@@ -297,14 +287,22 @@ namespace KuruKuruClicker
                 "咕噜噜! ",
             };
             squishButton.Content = squishButtonTexts[0];
+            gifMadeTB.Text = "赫塔GIF:";
+            pcAuthorTB.Text = "PC版作者:";
+            pcRepoTB.Text = "GitHub回购PC:";
+            siteRepoTB.Text = "GitHub回购站点:";
         }
     
         private void SetLanguageJapanise()
         {
             welcometb.Text = "ヘルタクルクルリングへようこそ";
             siteInfoTB.Text = "ヘルタのためのウェブサイト、（迷惑な）かわいい天才Honkai：そこにスターレールキャラクター。  ";
-            //TODO dynamic text
-            squishInfoTB.Text = "クル～が潰されてしまった";
+            squishInfoTexts = new string[2]
+            {
+                "クル～のために押しつぶされてきました",
+                "ヘルタはクル-エドのためにされています",
+            };
+            squishInfoTB.Text = squishInfoTexts[0];
             timesTB.Text = "回";
             squishButtonTexts = new string[2]
             {
@@ -312,13 +310,21 @@ namespace KuruKuruClicker
                 "クル クル~!",
             };
             squishButton.Content = squishButtonTexts[0];
+            gifMadeTB.Text = "ヘルタ-ギフ:";
+            pcAuthorTB.Text = "PC版作者:";
+            pcRepoTB.Text = "GitHubリポジトリPC:";
+            siteRepoTB.Text = "GitHubレポサイト:";
         }
         private void SetLanguageKorean()
         {
             welcometb.Text = "헤르타 쿠루 쿠루링에 오신 것을 환영합니다";
             siteInfoTB.Text = "헤르타에 대한 웹 사이트,(성가신)귀여운 천재 혼카이:거기에 스타 레일 문자.  ";
-            //TODO dynamic text
-            squishInfoTB.Text = "쿠루~이 찌그러졌다";
+            squishInfoTexts = new string[2]
+            {
+                "쿠루~는",
+                "헤르타는 쿠루에드였어",
+            };
+            squishInfoTB.Text = squishInfoTexts[0];
             timesTB.Text = "시간";
             squishButtonTexts = new string[2]
             {
@@ -326,11 +332,37 @@ namespace KuruKuruClicker
                 "빙글 빙글~!",
             };
             squishButton.Content = squishButtonTexts[0];
+            gifMadeTB.Text = "헤르타 지프:";
+            pcAuthorTB.Text = "버전 작성자:";
+            pcRepoTB.Text = "기투브 레포 컴퓨터:";
+            siteRepoTB.Text = "지투브 레포 사이트:";
         }
 
         private void refreshDynamicTexts()
         {
             squishButton.Content = squishButtonTexts[(new Random()).Next(0,2)];
+            squishInfoTB.Text = squishInfoTexts[(new Random()).Next(0,2)];
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://twitter.com/Seseren_kr"));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://steamcommunity.com/id/KoksMen/"));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://github.com/KoksMen/herta_kuru_pc"));
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://github.com/duiqt/herta.kuru"));
+        }
+
     }
 }
