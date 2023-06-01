@@ -72,7 +72,7 @@
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                             Margin="0"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Center" />
+                            HorizontalAlignment="Center"/>
                             <TextBox x:Name="PART_EditableTextBox"
                             Style="{x:Null}" 
                             Template="{StaticResource ComboBoxTextBox}" 
@@ -93,10 +93,12 @@
                             PopupAnimation="Slide">
 
                                 <Grid Name="DropDown"
-                              SnapsToDevicePixels="True"                
+                              SnapsToDevicePixels="True"
+                                      Background="Transparent"
                               MinWidth="{TemplateBinding ActualWidth}"
                               MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                     <Border 
+                                CornerRadius="10"
                                 x:Name="DropDownBorder"
                                 Background="White"
                                 BorderThickness="1"
@@ -107,32 +109,14 @@
                                 </Grid>
                             </Popup>
                         </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="HasItems" Value="false">
-                                <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Foreground" Value="#888888"/>
-                            </Trigger>
-                            <Trigger Property="IsGrouping" Value="true">
-                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
-                            </Trigger>
-                            <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
-                                <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="0"/>
-                                <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
-                            </Trigger>
-                            <Trigger Property="IsEditable"  Value="true">
-                                <Setter Property="IsTabStop" Value="false"/>
-                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
-                                <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
+                        
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
             </Style.Triggers>
         </Style>
+
 
         <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
             <Setter Property="SnapsToDevicePixels" Value="true"/>
@@ -149,7 +133,7 @@
                             <Trigger Property="IsHighlighted" Value="true">
                                 <Setter TargetName="Border" 
                                         Property="Background" 
-                                        Value="Blue"/>
+                                        Value="#1e90ff"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter Property="Foreground" Value="#888888"/>
@@ -312,84 +296,93 @@
             <StackPanel 
                 Orientation="Vertical" 
                 Grid.Column="1"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Center"
+                MinWidth="360"
+                Margin="20 0 0 0"
                 >
-                <TextBlock Text="Herta gif made by:"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>
-                    <Hyperlink NavigateUri="https://twitter.com/Seseren_kr" TargetName="_blank" RequestNavigate="TwitterGif_RequestNavigate">
-                        <TextBlock>
-                            <InlineUIContainer>
-                                <Image Height="32"
+
+                <Button Background="Transparent" BorderThickness="0" 
+                        HorizontalContentAlignment="Left"
+                        Margin="0 0 0 5" Click="Button_Click"
+                        >
+                    <StackPanel Orientation="Horizontal" 
+                                >
+                        <Image Height="32"
                                        Width="32"
                                        Source="icons/twitter.png"
-                                       />
-                            </InlineUIContainer>
-                            <Run Text="@Seseren_kr" 
-                                 BaselineAlignment="Center"
-                                 />
-                        </TextBlock>
-                    </Hyperlink>
-                </TextBlock>
-                </StackPanel>
-
-                <TextBlock Text="Herta pc version made by:"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>
-                    <Hyperlink NavigateUri="https://steamcommunity.com/id/KoksMen/" TargetName="_blank" RequestNavigate="SteamKoks_RequestNavigate">
-                        <TextBlock>
-                            <InlineUIContainer>
-                                <Image Height="32"
+                                       Margin="0 0 20 0"        
+                               />
+                        <TextBlock Text="Herta GIF: " 
+                                   x:Name="gifMadeTB"
+                                   VerticalAlignment="Center"
+                                   />
+                        <TextBlock Text="@Seseren_kr" 
+                                   VerticalAlignment="Center"
+                                   />
+                    </StackPanel>
+                </Button>
+                <Button Background="Transparent" BorderThickness="0"
+                        HorizontalContentAlignment="Left"
+                        Margin="0 0 0 5" Click="Button_Click_1"
+                        >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="32"
                                        Width="32"
                                        Source="icons/steam.png"
+                               Margin="0 0 20 0"
                                        />
-                            </InlineUIContainer>
-                            <Run Text="@KoksMen" 
-                                 BaselineAlignment="Center"
-                                 />
-                        </TextBlock>
-                    </Hyperlink>
-                </TextBlock>
-                </StackPanel>
-
-                <TextBlock Text="You can check out pc version the GitHub repository here:"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>
-                    <Hyperlink NavigateUri="https://github.com/KoksMen/herta_kuru_pc" TargetName="_blank" RequestNavigate="GitHubRepoKoks_RequestNavigate">
-                        <TextBlock>
-                            <InlineUIContainer>
-                                <Image Height="32"
+                        <TextBlock Text="PC Verion Author: " 
+                                   x:Name="pcAuthorTB"
+                                   VerticalAlignment="Center"
+                                   />
+                        <TextBlock Text="@KoksMen" 
+                                   VerticalAlignment="Center"
+                                   />
+                    </StackPanel>
+                </Button>
+                <Button Background="Transparent" BorderThickness="0"
+                        HorizontalContentAlignment="Left"
+                        Margin="0 0 0 5" Click="Button_Click_2"
+                       >
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Height="32"
                                        Width="32"
                                        Source="icons/github.png"
+                               Margin="0 0 20 0"
                                        />
-                            </InlineUIContainer>
-                            <Run Text="herta_kuru_pc repo" 
-                                 BaselineAlignment="Center"
-                                 />
-                        </TextBlock>
-                    </Hyperlink>
-                </TextBlock>
-                </StackPanel>
-
-                <TextBlock Text="You can check out original web version the GitHub repository here:"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>
-                    <Hyperlink NavigateUri="https://github.com/duiqt/herta.kuru" TargetName="_blank" RequestNavigate="GitHubRepoOriginal_RequestNavigate_1">
-                        <TextBlock>
-                            <InlineUIContainer>
-                                <Image Height="32"
+                        <TextBlock Text="GitHub Repo PC: " 
+                                   x:Name="pcRepoTB"
+                                   VerticalAlignment="Center"
+                                   />
+                        <TextBlock Text="herta_kuru_pc repo" 
+                                   VerticalAlignment="Center"
+                                   />
+                    </StackPanel>
+                </Button>
+                <Button Background="Transparent" BorderThickness="0"
+                        HorizontalContentAlignment="Left"
+                        Margin="0 0 0 5"
+                        Click="Button_Click_3"
+                        >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Height="32"
                                        Width="32"
                                        Source="icons/github.png"
+                               Margin="0 0 20 0"
+                               HorizontalAlignment="Left"
                                        />
-                            </InlineUIContainer>
-                            <Run Text="herta_kuru repo" 
-                                 BaselineAlignment="Center"
-                                 />
-                        </TextBlock>
-                    </Hyperlink>
-                </TextBlock>
-                </StackPanel>
+                        <TextBlock Text="GitHub Repo Site: " 
+                                   x:Name="siteRepoTB"
+                                   VerticalAlignment="Center"
+                                   
+                                   />
+                        <TextBlock Text="herta_kuru repo" 
+                                   VerticalAlignment="Center"
+                                   />
+                    </StackPanel>
+                </Button>
+                
             </StackPanel>
 
         </Grid>
