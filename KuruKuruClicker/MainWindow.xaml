@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KuruKuruClicker"
         mc:Ignorable="d"
         Title="Kuru Kuru~" 
-        Height="500" 
+        Height="515" 
         Width="800"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -24,16 +24,20 @@
                   Grid.Column="0"
                   CornerRadius="10" 
                   Margin="1" 
-                  Background="#2d2463" 
+                  Background="#d1bdff" 
                   BorderBrush="#FF97A0A5"
                   BorderThickness="0,0,1,0" 
-                    Height="30"
+                  Height="30"
                     />
             </Grid>
         </ControlTemplate>
 
         <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
-            <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+            <Border 
+                x:Name="PART_ContentHost" 
+                Focusable="False" 
+                Background="{TemplateBinding Background}" 
+                />
         </ControlTemplate>
 
         <Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}">
@@ -45,6 +49,7 @@
             <Setter Property="MinWidth" Value="120"/>
             <Setter Property="MinHeight" Value="20"/>
             <Setter Property="Foreground" Value="White"/>
+            
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -54,24 +59,29 @@
                             Template="{StaticResource ComboBoxToggleButton}" 
                             Grid.Column="2" 
                             Focusable="false"
-                            IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                            IsChecked="{Binding Path=IsDropDownOpen,
+                                Mode=TwoWay,
+                                RelativeSource={RelativeSource TemplatedParent}}"
                             ClickMode="Press">
                             </ToggleButton>
-                            <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}"
+                            <ContentPresenter 
+                                Name="ContentSite" 
+                                IsHitTestVisible="False"  
+                                Content="{TemplateBinding SelectionBoxItem}"
                             ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                            Margin="3,3,23,3"
+                            Margin="0"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Left" />
+                            HorizontalAlignment="Center" />
                             <TextBox x:Name="PART_EditableTextBox"
                             Style="{x:Null}" 
                             Template="{StaticResource ComboBoxTextBox}" 
                             HorizontalAlignment="Left" 
                             VerticalAlignment="Center" 
-                            Margin="3,3,23,3"
+                            Margin="0"
                             Focusable="True" 
-                            Background="#FF3F3F3F"
-                            Foreground="Green"
+                            Background="White"
+                            Foreground="Black"
                             Visibility="Hidden"
                             IsReadOnly="{TemplateBinding IsReadOnly}"/>
                             <Popup 
@@ -88,8 +98,7 @@
                               MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                     <Border 
                                 x:Name="DropDownBorder"
-                                Background="#FF3F3F3F"
-
+                                Background="White"
                                 BorderThickness="1"
                                 BorderBrush="#888888"/>
                                     <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
@@ -138,7 +147,9 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsHighlighted" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="#FF4F4F4F"/>
+                                <Setter TargetName="Border" 
+                                        Property="Background" 
+                                        Value="Blue"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter Property="Foreground" Value="#888888"/>
@@ -184,11 +195,12 @@
 
                     <ComboBox HorizontalAlignment="Center" SelectedIndex="0" 
                               Foreground="White"
+                              x:Name="languageComboBox" SelectionChanged="languageComboBox_SelectionChanged"
                               >
-                        <ComboBoxItem Foreground="White">English</ComboBoxItem>
-                        <ComboBoxItem Foreground="White">中文</ComboBoxItem>
-                        <ComboBoxItem Foreground="White">日本語</ComboBoxItem>
-                        <ComboBoxItem Foreground="White">한국어</ComboBoxItem>
+                        <ComboBoxItem Foreground="Black">English</ComboBoxItem>
+                        <ComboBoxItem Foreground="Black">中文</ComboBoxItem>
+                        <ComboBoxItem Foreground="Black">日本語</ComboBoxItem>
+                        <ComboBoxItem Foreground="Black">한국어</ComboBoxItem>
                     </ComboBox>
 
                     <Separator Width="640" Height="1">
@@ -211,6 +223,7 @@
                 HorizontalAlignment="Center"
                 Foreground="White"
                 FontSize="15"
+                x:Name="siteInfoTB"
                 />
 
                     <StackPanel
@@ -223,13 +236,14 @@
                         Text="The kuru~ has been squished"
                         HorizontalAlignment="Center"
                         Foreground="White"
+                        x:Name="squishInfoTB"
                         />
 
                         <TextBlock
                         Text="{Binding Count, Mode=TwoWay, TargetNullValue=0, UpdateSourceTrigger=PropertyChanged}"
                         HorizontalAlignment="Center"
                         Foreground="#574f84"
-                        FontSize="15"
+                        FontSize="25"
                         FontWeight="Bold"
                     />
 
@@ -237,6 +251,7 @@
                         Text="times"
                         HorizontalAlignment="Center"
                         Foreground="White"
+                        x:Name="timesTB"
                         />
 
 
@@ -249,6 +264,7 @@
                         Padding="13"
                         Margin="0 5"
                         MaxWidth="150" 
+                        Width="Auto"
                         Click="SquishButton_Click"
                         >
                             <Button.Resources>

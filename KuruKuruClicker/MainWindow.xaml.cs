@@ -14,6 +14,8 @@ using System.IO;
 using System.Diagnostics;
 using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
+using System.Xml.Linq;
+using System.Text;
 
 namespace KuruKuruClicker
 {
@@ -22,6 +24,8 @@ namespace KuruKuruClicker
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        private bool firstStart = true;
+
         private int count;
         public int Count
         {
@@ -38,6 +42,7 @@ namespace KuruKuruClicker
         public MainWindow()
         {
             InitializeComponent();
+            firstStart = false;
 
             DataContext = this;
 
@@ -45,6 +50,7 @@ namespace KuruKuruClicker
 
             Count = 0;
 
+            SetLanguageEnglish();
 
             var hertaImage = new BitmapImage(new Uri($"img/hertaa_github.gif", UriKind.Relative));
             ImageBehavior.SetAnimatedSource(HertaBackgroundGif, hertaImage);
@@ -108,6 +114,7 @@ namespace KuruKuruClicker
 
             PlayKuru();
             AnimateHerta();
+            refreshDynamicTexts();
         }
 
         private void AnimateHerta()
@@ -227,6 +234,103 @@ namespace KuruKuruClicker
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
+        }
+
+        private void languageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!firstStart)
+            {
+                int selectedIndex = languageComboBox.SelectedIndex;
+                switch (selectedIndex)
+                {
+                    case 0:
+                        {
+                            SetLanguageEnglish();
+                            break;
+                        }
+                    case 1:
+                        {
+                            SetLanguageChinise();
+                            break;
+                        }
+                    case 2:
+                        {
+                            SetLanguageJapanise();
+                            break;
+                        }
+                    case 3:
+                        {
+                            SetLanguageKorean();
+                            break;
+                        }
+                }
+            }
+            
+        }
+
+        string[] squishButtonTexts; 
+        private void SetLanguageEnglish()
+        {
+            welcometb.Text = "Welcome to Herta Kuru Kururing";
+            siteInfoTB.Text = $"The website for Herta, the {"(annoying)"} cutest genius Honkai:  Star Rail character out there.  ";
+            //TODO dynamic text
+            squishInfoTB.Text = "The kuru~ has been squished";
+            timesTB.Text = "times";
+            squishButtonTexts = new string[2]
+            {
+                "Squish the kuru~!",
+                "Kuru kuru~!",
+            };
+            squishButton.Content = squishButtonTexts[0];
+        }
+
+        private void SetLanguageChinise()
+        {
+            welcometb.Text = "欢迎来到赫塔*库鲁*库鲁林";
+            siteInfoTB.Text = "赫塔的网站,最可爱的天才韩凯:星轨人物在那里.  ";
+            //TODO dynamic text
+            squishInfoTB.Text = "库鲁~被压扁了";
+            timesTB.Text = "时代";
+            squishButtonTexts = new string[2]
+            {
+                "转圈圈~",
+                "咕噜噜! ",
+            };
+            squishButton.Content = squishButtonTexts[0];
+        }
+    
+        private void SetLanguageJapanise()
+        {
+            welcometb.Text = "ヘルタクルクルリングへようこそ";
+            siteInfoTB.Text = "ヘルタのためのウェブサイト、（迷惑な）かわいい天才Honkai：そこにスターレールキャラクター。  ";
+            //TODO dynamic text
+            squishInfoTB.Text = "クル～が潰されてしまった";
+            timesTB.Text = "回";
+            squishButtonTexts = new string[2]
+            {
+                "クルを潰して～！",
+                "クル クル~!",
+            };
+            squishButton.Content = squishButtonTexts[0];
+        }
+        private void SetLanguageKorean()
+        {
+            welcometb.Text = "헤르타 쿠루 쿠루링에 오신 것을 환영합니다";
+            siteInfoTB.Text = "헤르타에 대한 웹 사이트,(성가신)귀여운 천재 혼카이:거기에 스타 레일 문자.  ";
+            //TODO dynamic text
+            squishInfoTB.Text = "쿠루~이 찌그러졌다";
+            timesTB.Text = "시간";
+            squishButtonTexts = new string[2]
+            {
+                "쿠루를 뭉개 버려~!",
+                "빙글 빙글~!",
+            };
+            squishButton.Content = squishButtonTexts[0];
+        }
+
+        private void refreshDynamicTexts()
+        {
+            squishButton.Content = squishButtonTexts[(new Random()).Next(0,2)];
         }
     }
 }
