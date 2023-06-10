@@ -346,6 +346,7 @@ namespace KuruKuruClicker
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            ModlaPage.Content = new pages.CreditPage();
             Process.Start(new ProcessStartInfo("https://twitter.com/Seseren_kr"));
         }
 

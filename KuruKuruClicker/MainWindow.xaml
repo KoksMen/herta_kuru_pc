@@ -386,6 +386,6 @@
             </StackPanel>
 
         </Grid>
-
+        <ContentPresenter Grid.RowSpan="2" x:Name="ModlaPage"/>
     </Grid>
 </Window>
