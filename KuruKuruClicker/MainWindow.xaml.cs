@@ -240,6 +240,11 @@ namespace KuruKuruClicker
                             SetLanguageKorean();
                             break;
                         }
+                    case 4:
+                        {
+                            SetLanguageBahasa();
+                            break;
+                        }
                 }
             }
             
@@ -250,11 +255,11 @@ namespace KuruKuruClicker
         private void SetLanguageEnglish()
         {
             welcometb.Text = "Welcome to Herta Kuru Kururing";
-            siteInfoTB.Text = $"The website for Herta, the {"(annoying)"} cutest genius Honkai:  Star Rail character out there.  ";
+            siteInfoTB.Text = $"The application for Herta, the {"(annoying)"} cutest genius Honkai:  Star Rail character out there.";
             squishInfoTexts = new string[2]
             {
                 "The kuru~ has been squished for",
-                "Herta has been kuru~ed for",
+                "Herta has been kuru~ for",
             };
             squishInfoTB.Text = squishInfoTexts[0];
             timesTB.Text = "times";
@@ -272,70 +277,92 @@ namespace KuruKuruClicker
 
         private void SetLanguageChinise()
         {
-            welcometb.Text = "欢迎来到赫塔*库鲁*库鲁林";
-            siteInfoTB.Text = "赫塔的网站,最可爱的天才韩凯:星轨人物在那里.  ";
+            welcometb.Text = "黑塔转圈圈~";
+            siteInfoTB.Text = "给黑塔酱写的小程序，对，就是那个{"(烦人的)"}最可爱的《崩坏：星穹铁道》角色！";
             squishInfoTexts = new string[2]
             {
-                "库鲁~已经被压扁了。",
-                "赫塔已经被库鲁-埃德了。",
+                "黑塔已经咕噜噜~了",
+                "黑塔已经转了",
             };
             squishInfoTB.Text = squishInfoTexts[0];
-            timesTB.Text = "时代";
+            timesTB.Text = "圈";
             squishButtonTexts = new string[2]
             {
                 "转圈圈~",
-                "咕噜噜! ",
+                "咕噜噜！",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "赫塔GIF:";
+            gifMadeTB.Text = "黑塔GIF:";
             pcAuthorTB.Text = "PC版作者:";
-            pcRepoTB.Text = "GitHub回购PC:";
-            siteRepoTB.Text = "GitHub回购站点:";
+            pcRepoTB.Text = "GitHub PC版仓库:";
+            siteRepoTB.Text = "GitHub原版仓库:";
         }
     
         private void SetLanguageJapanise()
         {
-            welcometb.Text = "ヘルタクルクルリングへようこそ";
-            siteInfoTB.Text = "ヘルタのためのウェブサイト、（迷惑な）かわいい天才Honkai：そこにスターレールキャラクター。  ";
+            welcometb.Text = "ヘルタクルクルへようこそ";
+            siteInfoTB.Text = "このアプリはヘルタのために作られた、 あの崩壊：スターレイルの{"(悩ましい)"}かわいい天才キャラー。";
             squishInfoTexts = new string[2]
             {
-                "クル～のために押しつぶされてきました",
-                "ヘルタはクル-エドのためにされています",
+                "もクルクル",
+                "ヘルタクル回る",
             };
             squishInfoTB.Text = squishInfoTexts[0];
             timesTB.Text = "回";
             squishButtonTexts = new string[2]
             {
-                "クルを潰して～！",
-                "クル クル~!",
+                "回る！",
+                "クル クル～！",
             };
             squishButton.Content = squishButtonTexts[0];
             gifMadeTB.Text = "ヘルタ-ギフ:";
-            pcAuthorTB.Text = "PC版作者:";
-            pcRepoTB.Text = "GitHubリポジトリPC:";
-            siteRepoTB.Text = "GitHubレポサイト:";
+            pcAuthorTB.Text = "PCバージョン開発者:";
+            pcRepoTB.Text = "GitHub PCリポジトリ:";
+            siteRepoTB.Text = "GitHubオリジンリポジトリ:";
         }
         private void SetLanguageKorean()
         {
-            welcometb.Text = "헤르타 쿠루 쿠루링에 오신 것을 환영합니다";
-            siteInfoTB.Text = "헤르타에 대한 웹 사이트,(성가신)귀여운 천재 혼카이:거기에 스타 레일 문자.  ";
+            welcometb.Text = "헤르타빙글 환영합니다~";
+            siteInfoTB.Text = "이 응용 프로그램 헤르타를 위해 만들어졌습니다, 붕괴: 스타레일 의 {"(귀찮은)"} 귀여운 천재";
             squishInfoTexts = new string[2]
             {
                 "쿠루~는",
                 "헤르타는 쿠루에드였어",
             };
             squishInfoTB.Text = squishInfoTexts[0];
-            timesTB.Text = "시간";
+            timesTB.Text = "번";
             squishButtonTexts = new string[2]
             {
-                "쿠루를 뭉개 버려~!",
+                "한 바퀴 돌다~!",
                 "빙글 빙글~!",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "헤르타 지프:";
+            gifMadeTB.Text = "헤르타GIF:";
             pcAuthorTB.Text = "버전 작성자:";
-            pcRepoTB.Text = "기투브 레포 컴퓨터:";
-            siteRepoTB.Text = "지투브 레포 사이트:";
+            pcRepoTB.Text = "GitHub PC버전 리 포지 토리:";
+            siteRepoTB.Text = "GitHub리 포지 토리:";
+        }
+        private void SetLanguageBahasa()
+        {
+            welcometb.Text = "Selamat datang di Herta kuru~";
+            siteInfoTB.Text = "Situs application yang dipersembahkan kepada Herta, sang Karakter Jenius {"(ngeselin)"} dari Honkai: Star Rail.";
+            squishInfoTexts = new string[2]
+            {
+                "Kuru nya telah dipencet sebanyak",
+                "Herta telah ter-kuru-kan sebanyak",
+            };
+            squishInfoTB.Text = squishInfoTexts[0];
+            timesTB.Text = "kali";
+            squishButtonTexts = new string[2]
+            {
+                "Pencet kuru nya~!",
+                "Kuru kuru~!",
+            };
+            squishButton.Content = squishButtonTexts[0];
+            gifMadeTB.Text = "herta GIF:";
+            pcAuthorTB.Text = "PC Version Author:";
+            pcRepoTB.Text = "GitHub PC repo:";
+            siteRepoTB.Text = "GitHub repo:";
         }
 
         private void refreshDynamicTexts()
