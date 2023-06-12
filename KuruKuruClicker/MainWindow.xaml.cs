@@ -345,7 +345,7 @@ namespace KuruKuruClicker
         private void SetLanguageBahasa()
         {
             welcometb.Text = "Selamat datang di Herta kuru~";
-            siteInfoTB.Text = "Situs web yang dipersembahkan kepada Herta, sang Karakter Jenius {"(ngeselin)"} dari Honkai: Star Rail.";
+            siteInfoTB.Text = "Situs application yang dipersembahkan kepada Herta, sang Karakter Jenius {"(ngeselin)"} dari Honkai: Star Rail.";
             squishInfoTexts = new string[2]
             {
                 "Kuru nya telah dipencet sebanyak",
