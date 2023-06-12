@@ -28,7 +28,7 @@ The art the relevant copyright of Honkai: Star Rail belongs to miHoYo/HoYoverse.
 PC Contributers | PC版贡献者:
 
 <a href="https://github.com/KoksMen/herta_kuru_pc/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=KoksMen/Herta_Kuru_PC" />
+  <img src="https://contrib.rocks/image?repo=Koksmen/Herta_kuru_pc" />
 </a>
 
 ***
