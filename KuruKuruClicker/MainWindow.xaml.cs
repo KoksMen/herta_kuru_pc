@@ -291,8 +291,6 @@ namespace KuruKuruClicker
                 "咕噜噜！",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "黑塔GIF:";
-            pcAuthorTB.Text = "PC版作者:";
             pcRepoTB.Text = "GitHub PC版仓库:";
             siteRepoTB.Text = "GitHub原版仓库:";
         }
@@ -314,8 +312,6 @@ namespace KuruKuruClicker
                 "クル クル～！",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "ヘルタ-ギフ:";
-            pcAuthorTB.Text = "PCバージョン開発者:";
             pcRepoTB.Text = "GitHub PCリポジトリ:";
             siteRepoTB.Text = "GitHubオリジンリポジトリ:";
         }
@@ -336,8 +332,6 @@ namespace KuruKuruClicker
                 "빙글 빙글~!",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "헤르타GIF:";
-            pcAuthorTB.Text = "버전 작성자:";
             pcRepoTB.Text = "GitHub PC버전 리 포지 토리:";
             siteRepoTB.Text = "GitHub리 포지 토리:";
         }
@@ -358,8 +352,6 @@ namespace KuruKuruClicker
                 "Kuru kuru~!",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "herta GIF:";
-            pcAuthorTB.Text = "PC Version Author:";
             pcRepoTB.Text = "GitHub PC repo:";
             siteRepoTB.Text = "GitHub repo:";
         }
