@@ -16,6 +16,7 @@ using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using System.Text;
+using KuruKuruClicker.pages;
 
 namespace KuruKuruClicker
 {
@@ -269,8 +270,6 @@ namespace KuruKuruClicker
                 "Kuru kuru~!",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "Herta GIF:";
-            pcAuthorTB.Text = "PC Verion Author:";
             pcRepoTB.Text = "GitHub Repo PC:";
             siteRepoTB.Text = "GitHub Repo Site:";
         }
@@ -373,12 +372,23 @@ namespace KuruKuruClicker
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://twitter.com/Seseren_kr"));
+            CreditsWebPage creditsWebPage = new CreditsWebPage();
+            creditsWebPage.PageClosed += ModalPage_Closed;
+            ModlaPage.Content = creditsWebPage;
+            //Process.Start(new ProcessStartInfo("https://twitter.com/Seseren_kr"));
+        }
+
+        private void ModalPage_Closed()
+        {
+            ModlaPage.Content = null;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://steamcommunity.com/id/KoksMen/"));
+            CreditsPcPage creditsPcPage = new CreditsPcPage();
+            creditsPcPage.PageClosed += ModalPage_Closed;
+            ModlaPage.Content = creditsPcPage;
+            //Process.Start(new ProcessStartInfo("https://steamcommunity.com/id/KoksMen/"));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

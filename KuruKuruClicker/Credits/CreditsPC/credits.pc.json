@@ -1,0 +1,29 @@
+{
+    "contributors": [
+        {
+            "username": "xXKoksMenXx",
+            "thing": "Main Dev",
+            "socialmedia": {
+                "github": "KoksMen"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/105588059?v=4"
+        },
+        {
+            "username": "vgwik",
+            "thing": "Main Translator",
+            "socialmedia": {
+              "github": "vgwik"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/52212950?v=4"
+        },
+        {
+            "username": "fred913",
+            "name": "Sheng Fan",
+            "thing": "Chinise translator",
+            "socialmedia": {
+                "github": "fred913",
+            },
+            "icon": "https://avatars.githubusercontent.com/u/41846047?v=4"
+        }
+    ]
+}
