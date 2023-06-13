@@ -278,7 +278,7 @@ namespace KuruKuruClicker
         private void SetLanguageChinise()
         {
             welcometb.Text = "黑塔转圈圈~";
-            siteInfoTB.Text = "给黑塔酱写的小程序，对，就是那个{"(烦人的)"}最可爱的《崩坏：星穹铁道》角色！";
+            siteInfoTB.Text = $"给黑塔酱写的小程序，对，就是那个{"(烦人的)"}最可爱的《崩坏：星穹铁道》角色！";
             squishInfoTexts = new string[2]
             {
                 "黑塔已经咕噜噜~了",
@@ -301,7 +301,7 @@ namespace KuruKuruClicker
         private void SetLanguageJapanise()
         {
             welcometb.Text = "ヘルタクルクルへようこそ";
-            siteInfoTB.Text = "このアプリはヘルタのために作られた、 あの崩壊：スターレイルの{"(悩ましい)"}かわいい天才キャラー。";
+            siteInfoTB.Text = $"このアプリはヘルタのために作られた、 あの崩壊：スターレイルの{"(悩ましい)"}かわいい天才キャラー。";
             squishInfoTexts = new string[2]
             {
                 "もクルクル",
@@ -323,7 +323,7 @@ namespace KuruKuruClicker
         private void SetLanguageKorean()
         {
             welcometb.Text = "헤르타빙글 환영합니다~";
-            siteInfoTB.Text = "이 응용 프로그램 헤르타를 위해 만들어졌습니다, 붕괴: 스타레일 의 {"(귀찮은)"} 귀여운 천재";
+            siteInfoTB.Text = $"이 응용 프로그램 헤르타를 위해 만들어졌습니다, 붕괴: 스타레일 의 {"(귀찮은)"} 귀여운 천재";
             squishInfoTexts = new string[2]
             {
                 "쿠루~는",
@@ -345,7 +345,7 @@ namespace KuruKuruClicker
         private void SetLanguageBahasa()
         {
             welcometb.Text = "Selamat datang di Herta kuru~";
-            siteInfoTB.Text = "Situs application yang dipersembahkan kepada Herta, sang Karakter Jenius {"(ngeselin)"} dari Honkai: Star Rail.";
+            siteInfoTB.Text = $"Situs application yang dipersembahkan kepada Herta, sang Karakter Jenius {"(ngeselin)"} dari Honkai: Star Rail.";
             squishInfoTexts = new string[2]
             {
                 "Kuru nya telah dipencet sebanyak",
