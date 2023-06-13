@@ -16,6 +16,7 @@ using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using System.Text;
+using KuruKuruClicker.pages;
 
 namespace KuruKuruClicker
 {
@@ -264,8 +265,6 @@ namespace KuruKuruClicker
                 "Kuru kuru~!",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "Herta GIF:";
-            pcAuthorTB.Text = "PC Verion Author:";
             pcRepoTB.Text = "GitHub Repo PC:";
             siteRepoTB.Text = "GitHub Repo Site:";
         }
@@ -287,8 +286,6 @@ namespace KuruKuruClicker
                 "咕噜噜! ",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "赫塔GIF:";
-            pcAuthorTB.Text = "PC版作者:";
             pcRepoTB.Text = "GitHub回购PC:";
             siteRepoTB.Text = "GitHub回购站点:";
         }
@@ -310,8 +307,6 @@ namespace KuruKuruClicker
                 "クル クル~!",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "ヘルタ-ギフ:";
-            pcAuthorTB.Text = "PC版作者:";
             pcRepoTB.Text = "GitHubリポジトリPC:";
             siteRepoTB.Text = "GitHubレポサイト:";
         }
@@ -332,8 +327,6 @@ namespace KuruKuruClicker
                 "빙글 빙글~!",
             };
             squishButton.Content = squishButtonTexts[0];
-            gifMadeTB.Text = "헤르타 지프:";
-            pcAuthorTB.Text = "버전 작성자:";
             pcRepoTB.Text = "기투브 레포 컴퓨터:";
             siteRepoTB.Text = "지투브 레포 사이트:";
         }
@@ -346,13 +339,23 @@ namespace KuruKuruClicker
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ModlaPage.Content = new pages.CreditPage();
-            Process.Start(new ProcessStartInfo("https://twitter.com/Seseren_kr"));
+            CreditsWebPage creditsWebPage = new CreditsWebPage();
+            creditsWebPage.PageClosed += ModalPage_Closed;
+            ModlaPage.Content = creditsWebPage;
+            //Process.Start(new ProcessStartInfo("https://twitter.com/Seseren_kr"));
+        }
+
+        private void ModalPage_Closed()
+        {
+            ModlaPage.Content = null;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://steamcommunity.com/id/KoksMen/"));
+            CreditsPcPage creditsPcPage = new CreditsPcPage();
+            creditsPcPage.PageClosed += ModalPage_Closed;
+            ModlaPage.Content = creditsPcPage;
+            //Process.Start(new ProcessStartInfo("https://steamcommunity.com/id/KoksMen/"));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
