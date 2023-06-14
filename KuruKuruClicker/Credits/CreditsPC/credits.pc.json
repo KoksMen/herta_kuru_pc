@@ -21,9 +21,17 @@
             "name": "Sheng Fan",
             "thing": "Chinise translator",
             "socialmedia": {
-                "github": "fred913",
+                "github": "fred913"
             },
             "icon": "https://avatars.githubusercontent.com/u/41846047?v=4"
+        },
+        {
+            "username": "NikalsGG",
+            "thing": "Russian translator",
+            "socialmedia": {
+                "github": "NikalsGG"
+            },
+            "icon": "https://avatars.githubusercontent.com/u/126110457?v=4"
         }
     ]
 }
