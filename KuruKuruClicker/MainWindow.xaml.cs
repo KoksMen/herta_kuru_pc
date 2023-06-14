@@ -246,6 +246,11 @@ namespace KuruKuruClicker
                             SetLanguageBahasa();
                             break;
                         }
+                    case 5:
+                        {
+                            SetLanguageRussian();
+                            break;
+                        }
                 }
             }
             
@@ -273,7 +278,26 @@ namespace KuruKuruClicker
             pcRepoTB.Text = "GitHub Repo PC:";
             siteRepoTB.Text = "GitHub Repo Site:";
         }
-
+        private void SetLanguageRussian()
+        {
+            welcometb.Text = "Добро пожаловать в Герта Куру Куруринг";
+            siteInfoTB.Text = $"Приложение для Герты, {"(надоедливого)"} самого симпатичного и гениального персонажа Honkai: Star Rail.";
+            squishInfoTexts = new string[2]
+            {
+                "куру~ было воспроизведено уже",
+                "Герта воспроизвела куру~ уже",
+            };
+            squishInfoTB.Text = squishInfoTexts[0];
+            timesTB.Text = "раз";
+            squishButtonTexts = new string[2]
+            {
+                "Воспроизведи куру~!",
+                "Куру куру~!",
+            };
+            squishButton.Content = squishButtonTexts[0];
+            pcRepoTB.Text = "GitHub PC репозиторий:";
+            siteRepoTB.Text = "GitHub репозиторий сайта:";
+        }
         private void SetLanguageChinise()
         {
             welcometb.Text = "黑塔转圈圈~";

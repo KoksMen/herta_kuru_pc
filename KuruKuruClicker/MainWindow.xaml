@@ -186,6 +186,7 @@
                         <ComboBoxItem Foreground="Black">日本語</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">한국어</ComboBoxItem>
                         <ComboBoxItem Foreground="Black">Bahasa</ComboBoxItem>
+                        <ComboBoxItem Foreground="Black">Русский</ComboBoxItem>
                     </ComboBox>
 
                     <Separator Width="640" Height="1">
