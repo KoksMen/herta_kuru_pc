@@ -61,6 +61,57 @@ namespace KuruKuruClicker.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на {
+        ///    &quot;contributors&quot;: [
+        ///        {
+        ///            &quot;username&quot;: &quot;xXKoksMenXx&quot;,
+        ///            &quot;thing&quot;: &quot;Main Dev&quot;,
+        ///            &quot;socialmedia&quot;: {
+        ///                &quot;github&quot;: &quot;KoksMen&quot;
+        ///            },
+        ///            &quot;icon&quot;: &quot;https://avatars.githubusercontent.com/u/105588059?v=4&quot;
+        ///        },
+        ///        {
+        ///            &quot;username&quot;: &quot;vgwik&quot;,
+        ///            &quot;thing&quot;: &quot;Main Translator&quot;,
+        ///            &quot;socialmedia&quot;: {
+        ///              &quot;github&quot;: &quot;vgwik&quot;
+        ///            },
+        ///            &quot;icon&quot;: &quot;https://avatars.githubusercontent.com/u/522 [остаток строки не уместился]&quot;;.
+        /// </summary>
+        public static string credits_pc {
+            get {
+                return ResourceManager.GetString("credits_pc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {
+        ///    &quot;contributors&quot;: [
+        ///        {
+        ///            &quot;username&quot;: &quot;duiqt&quot;,
+        ///            &quot;name&quot;: &quot;Phúc Duy&quot;,
+        ///            &quot;thing&quot;: &quot;Main Dev&quot;,
+        ///            &quot;socialmedia&quot;: {
+        ///                &quot;github&quot;: &quot;duiqt&quot;
+        ///            },
+        ///            &quot;icon&quot;: &quot;https://avatars.githubusercontent.com/u/90624125?v=4&quot;
+        ///        },
+        ///        {
+        ///            &quot;username&quot;: &quot;risbi0&quot;,
+        ///            &quot;thing&quot;: &quot;Main Dev&quot;,
+        ///            &quot;socialmedia&quot;: {
+        ///                &quot;github&quot;: &quot;risbi0&quot;
+        ///            },
+        ///            &quot;icon&quot;: &quot;https://avatars.github [остаток строки не уместился]&quot;;.
+        /// </summary>
+        public static string credits_web {
+            get {
+                return ResourceManager.GetString("credits_web", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         public static System.IO.UnmanagedMemoryStream kuru1 {

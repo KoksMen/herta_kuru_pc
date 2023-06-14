@@ -39,7 +39,7 @@ namespace KuruKuruClicker.pages
 
         private void LoadDevelopers()
         {
-            string jsonFilePath = @"C:\Users\xxkok\Source\Repos\KoksMen\herta_kuru_pc\KuruKuruClicker\Credits\CreditsWeb\credits.web.json";
+            string jsonFilePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\KuruKuruClicker\CreditsWeb\credits.web.json";
             string jsonData = File.ReadAllText(jsonFilePath);
             var data = JsonConvert.DeserializeObject<Data>(jsonData);
             Developers = data.contributors;

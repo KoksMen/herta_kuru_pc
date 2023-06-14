@@ -13,7 +13,6 @@ using System.Linq;
 using System.IO;
 using System.Diagnostics;
 using System.Windows.Media.Media3D;
-using System.Windows.Shapes;
 using System.Xml.Linq;
 using System.Text;
 using KuruKuruClicker.pages;
@@ -25,7 +24,20 @@ namespace KuruKuruClicker
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        static string hertaAudioFolder = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\KuruKuruClicker\audio";
+        static string hertaKuruToAudio = System.IO.Path.Combine(hertaAudioFolder, "kuruto.wav");
+        static string hertaKuruRingAudio = System.IO.Path.Combine(hertaAudioFolder, "kuru1.wav");
+        static string hertaKuruKuruAudio = System.IO.Path.Combine(hertaAudioFolder, "kuru2.wav");
+        static string[] hertaAudio = new string[3] { hertaKuruToAudio, hertaKuruRingAudio, hertaKuruKuruAudio };
+
+        static string jsonCreditsFolderPC = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\KuruKuruClicker\CreditsPC";
+        static string jsonCreditsFolderWeb = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\KuruKuruClicker\CreditsWeb";
+        static string jsonCreditsPC = System.IO.Path.Combine(jsonCreditsFolderPC, "credits.pc.json");
+        static string jsonCreditsWeb = System.IO.Path.Combine(jsonCreditsFolderWeb, "credits.web.json");
+
+
         private bool firstStart = true;
+        private bool firstSquish = true;
 
         private int count;
         public int Count
@@ -38,7 +50,6 @@ namespace KuruKuruClicker
             }
         }
 
-        private bool firstSquish = true;
 
         public MainWindow()
         {
@@ -47,7 +58,8 @@ namespace KuruKuruClicker
 
             DataContext = this;
 
-            LoadFiles();
+            LoadAudioFiles();
+            LoadJsonFiles();
 
             Count = 0;
 
@@ -57,7 +69,7 @@ namespace KuruKuruClicker
             SetLanguageEnglish();
         }
 
-        private static void LoadFiles()
+        private static void LoadAudioFiles()
         {
             try
             {
@@ -97,9 +109,49 @@ namespace KuruKuruClicker
             {
                 MessageBox.Show(e.Message);
             }
-
-
         }
+        private static void LoadJsonFiles()
+        {
+            try
+            {
+                if (!Directory.Exists(jsonCreditsFolderPC))
+                {
+                    Directory.CreateDirectory(jsonCreditsFolderPC);
+                }
+                if (!Directory.Exists(jsonCreditsFolderWeb))
+                {
+                    Directory.CreateDirectory(jsonCreditsFolderWeb);
+                }
+
+                string[] creditsFilesOC = Directory.GetFiles(jsonCreditsFolderPC);
+                string[] creditsFilesWeb = Directory.GetFiles(jsonCreditsFolderWeb);
+
+                if (!creditsFilesOC.Contains("credits.pc.json") || !creditsFilesWeb.Contains("credits.web.json"))
+                {
+                    string jsonPC = Properties.Resources.credits_pc;
+
+                    using (var fileStream = new FileStream(jsonCreditsPC, FileMode.Create, FileAccess.Write))
+                    using (var writer = new StreamWriter(fileStream))
+                    {
+                        writer.Write(jsonPC);
+                    }
+
+                    string jsonWeb = Properties.Resources.credits_web;
+
+                    using (var fileStream = new FileStream(jsonCreditsWeb, FileMode.Create, FileAccess.Write))
+                    using (var writer = new StreamWriter(fileStream))
+                    {
+                        writer.Write(jsonWeb);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -107,6 +159,8 @@ namespace KuruKuruClicker
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+
+
 
         private void SquishButton_Click(object sender, RoutedEventArgs e)
         {
@@ -116,7 +170,6 @@ namespace KuruKuruClicker
             AnimateHerta();
             refreshDynamicTexts();
         }
-
         private void AnimateHerta()
         {
             Random random = new Random();
@@ -155,14 +208,6 @@ namespace KuruKuruClicker
                 }
             };
         }
-
-        static string hertaAudioFolder = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\KuruKuruClicker\audio";
-        static string hertaKuruToAudio = System.IO.Path.Combine(hertaAudioFolder, "kuruto.wav");
-        static string hertaKuruRingAudio = System.IO.Path.Combine(hertaAudioFolder, "kuru1.wav");
-        static string hertaKuruKuruAudio = System.IO.Path.Combine(hertaAudioFolder, "kuru2.wav");
-
-        static string[] hertaAudio = new string[3] { hertaKuruToAudio, hertaKuruRingAudio, hertaKuruKuruAudio };
-
         private void PlayKuru()
         {
             try
@@ -273,7 +318,6 @@ namespace KuruKuruClicker
             pcRepoTB.Text = "GitHub Repo PC:";
             siteRepoTB.Text = "GitHub Repo Site:";
         }
-
         private void SetLanguageChinise()
         {
             welcometb.Text = "黑塔转圈圈~";
@@ -294,7 +338,6 @@ namespace KuruKuruClicker
             pcRepoTB.Text = "GitHub PC版仓库:";
             siteRepoTB.Text = "GitHub原版仓库:";
         }
-    
         private void SetLanguageJapanise()
         {
             welcometb.Text = "ヘルタクルクルへようこそ";
@@ -355,39 +398,33 @@ namespace KuruKuruClicker
             pcRepoTB.Text = "GitHub PC repo:";
             siteRepoTB.Text = "GitHub repo:";
         }
-
         private void refreshDynamicTexts()
         {
             squishButton.Content = squishButtonTexts[(new Random()).Next(0,2)];
             squishInfoTB.Text = squishInfoTexts[(new Random()).Next(0,2)];
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            CreditsWebPage creditsWebPage = new CreditsWebPage();
-            creditsWebPage.PageClosed += ModalPage_Closed;
-            ModlaPage.Content = creditsWebPage;
-            //Process.Start(new ProcessStartInfo("https://twitter.com/Seseren_kr"));
-        }
 
         private void ModalPage_Closed()
         {
             ModlaPage.Content = null;
         }
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CreditsWebPage creditsWebPage = new CreditsWebPage();
+            creditsWebPage.PageClosed += ModalPage_Closed;
+            ModlaPage.Content = creditsWebPage;
+        }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             CreditsPcPage creditsPcPage = new CreditsPcPage();
             creditsPcPage.PageClosed += ModalPage_Closed;
             ModlaPage.Content = creditsPcPage;
-            //Process.Start(new ProcessStartInfo("https://steamcommunity.com/id/KoksMen/"));
         }
-
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://github.com/KoksMen/herta_kuru_pc"));
         }
-
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://github.com/duiqt/herta.kuru"));

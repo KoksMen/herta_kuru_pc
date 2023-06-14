@@ -38,7 +38,7 @@ namespace KuruKuruClicker.pages
 
         private void LoadDevelopers()
         {
-            string jsonFilePath = @"C:\Users\xxkok\Source\Repos\KoksMen\herta_kuru_pc\KuruKuruClicker\Credits\CreditsPC\credits.pc.json";
+            string jsonFilePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\KuruKuruClicker\CreditsPC\credits.pc.json";
             string jsonData = File.ReadAllText(jsonFilePath);
             var data = JsonConvert.DeserializeObject<DataPC>(jsonData);
             Developers = data.contributors;
