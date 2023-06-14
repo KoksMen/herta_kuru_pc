@@ -327,17 +327,17 @@ namespace KuruKuruClicker
         private void SetLanguageRussian()
         {
             welcometb.Text = "Добро пожаловать в Герта Куру Куруринг";
-            siteInfoTB.Text = $"Приложение для Герты, {"(надоедливого)"} самого симпатичного и гениального персонажа Honkai: Star Rail.";
+            siteInfoTB.Text = $"Приложение для Герты, самого {"(надоедливого)"} симпатичного и гениального персонажа Honkai: Star Rail.";
             squishInfoTexts = new string[2]
             {
-                "куру~ было воспроизведено уже",
-                "Герта воспроизвела куру~ уже",
+                "Куру~ вращалась уже",
+                "Герта куру~ вращалась уже",
             };
             squishInfoTB.Text = squishInfoTexts[0];
             timesTB.Text = "раз";
             squishButtonTexts = new string[2]
             {
-                "Воспроизведи куру~!",
+                "Вращать куру~!",
                 "Куру куру~!",
             };
             squishButton.Content = squishButtonTexts[0];
