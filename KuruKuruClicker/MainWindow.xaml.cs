@@ -16,6 +16,7 @@ using System.Windows.Media.Media3D;
 using System.Xml.Linq;
 using System.Text;
 using KuruKuruClicker.pages;
+using KuruKuruClicker.Properties;
 
 namespace KuruKuruClicker
 {
@@ -54,19 +55,19 @@ namespace KuruKuruClicker
         public MainWindow()
         {
             InitializeComponent();
-            firstStart = false;
 
             DataContext = this;
 
             LoadAudioFiles();
             LoadJsonFiles();
 
-            Count = 0;
+            Count = Settings.Default.KuruCount;
 
             var hertaImage = new BitmapImage(new Uri($"img/hertaa_github.gif", UriKind.Relative));
             ImageBehavior.SetAnimatedSource(HertaBackgroundGif, hertaImage);
 
-            SetLanguageEnglish();
+            ChangeLanguage(Settings.Default.TextLanguage);
+            firstStart = false;
         }
 
         private static void LoadAudioFiles()
@@ -165,6 +166,8 @@ namespace KuruKuruClicker
         private void SquishButton_Click(object sender, RoutedEventArgs e)
         {
             Count++;
+            Properties.Settings.Default.KuruCount = Count;
+            Settings.Default.Save();
 
             PlayKuru();
             AnimateHerta();
@@ -264,41 +267,51 @@ namespace KuruKuruClicker
             if (!firstStart)
             {
                 int selectedIndex = languageComboBox.SelectedIndex;
-                switch (selectedIndex)
-                {
-                    case 0:
-                        {
-                            SetLanguageEnglish();
-                            break;
-                        }
-                    case 1:
-                        {
-                            SetLanguageChinise();
-                            break;
-                        }
-                    case 2:
-                        {
-                            SetLanguageJapanise();
-                            break;
-                        }
-                    case 3:
-                        {
-                            SetLanguageKorean();
-                            break;
-                        }
-                    case 4:
-                        {
-                            SetLanguageBahasa();
-                            break;
-                        }
-                    case 5:
-                        {
-                            SetLanguageRussian();
-                            break;
-                        }
-                }
+                ChangeLanguage(selectedIndex);
+                Settings.Default.TextLanguage = selectedIndex;
             }
             
+        }
+
+        private void ChangeLanguage(int languageIndex)
+        {
+            if (firstStart)
+            {
+                languageComboBox.SelectedIndex = languageIndex;
+            }
+            switch (languageIndex)
+            {
+                case 0:
+                    {
+                        SetLanguageEnglish();
+                        break;
+                    }
+                case 1:
+                    {
+                        SetLanguageChinise();
+                        break;
+                    }
+                case 2:
+                    {
+                        SetLanguageJapanise();
+                        break;
+                    }
+                case 3:
+                    {
+                        SetLanguageKorean();
+                        break;
+                    }
+                case 4:
+                    {
+                        SetLanguageBahasa();
+                        break;
+                    }
+                case 5:
+                    {
+                        SetLanguageRussian();
+                        break;
+                    }
+            }
         }
 
         string[] squishInfoTexts; 
