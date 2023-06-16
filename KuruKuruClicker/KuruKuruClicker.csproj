@@ -382,9 +382,6 @@
     <Content Include="audio\japanise\kuruto.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\转圈圈咯2.wav" />
-    <None Include="Resources\转圈圈1.wav" />
-    <None Include="Resources\要坏掉了3.wav" />
     <Resource Include="icons\credits.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

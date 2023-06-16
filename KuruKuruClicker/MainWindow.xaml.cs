@@ -282,11 +282,14 @@ namespace KuruKuruClicker
                     player.Visibility = Visibility.Hidden;
                     player.Source = new Uri(hertaAudio[(new Random()).Next(0, 3)]);
 
+
                     HertaShowerGrid.Children.Add(player);
                     Grid.SetZIndex(player, -2);
 
                     player.MediaEnded += (sender, e) =>
                     {
+                        player.Stop();
+                        player.Source = null;
                         HertaShowerGrid.Children.Remove(player);
                         player = null;
                     };
@@ -300,14 +303,9 @@ namespace KuruKuruClicker
             }
         }
 
-        
 
-        private void languageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-            
-        }
-
+        string[] squishInfoTexts; 
+        string[] squishButtonTexts; 
         private void ChangeLanguage(int languageIndex)
         {
             switch (languageIndex)
@@ -344,9 +342,6 @@ namespace KuruKuruClicker
                     }
             }
         }
-
-        string[] squishInfoTexts; 
-        string[] squishButtonTexts; 
         private void SetLanguageEnglish()
         {
             welcometb.Text = "Welcome to Herta Kuru Kururing";
@@ -367,28 +362,6 @@ namespace KuruKuruClicker
             pcRepoTB.Text = "GitHub Repo PC:";
             siteRepoTB.Text = "GitHub Repo Site:";
         }
-
-        private void SetLanguageRussian()
-        {
-            welcometb.Text = "Добро пожаловать в Герта Куру Куруринг";
-            siteInfoTB.Text = $"Приложение для Герты, самого {"(надоедливого)"} симпатичного и гениального персонажа Honkai: Star Rail.";
-            squishInfoTexts = new string[2]
-            {
-                "Куру~ вращалась уже",
-                "Герта куру~ вращалась уже",
-            };
-            squishInfoTB.Text = squishInfoTexts[0];
-            timesTB.Text = "раз";
-            squishButtonTexts = new string[2]
-            {
-                "Вращать куру~!",
-                "Куру куру~!",
-            };
-            squishButton.Content = squishButtonTexts[0];
-            pcRepoTB.Text = "GitHub PC репозиторий:";
-            siteRepoTB.Text = "GitHub репозиторий сайта:";
-        }
-
         private void SetLanguageChinise()
         {
             welcometb.Text = "黑塔转圈圈~";
@@ -469,6 +442,26 @@ namespace KuruKuruClicker
             pcRepoTB.Text = "GitHub PC repo:";
             siteRepoTB.Text = "GitHub repo:";
         }
+        private void SetLanguageRussian()
+        {
+            welcometb.Text = "Добро пожаловать в Герта Куру Куруринг";
+            siteInfoTB.Text = $"Приложение для Герты, самого {"(надоедливого)"} симпатичного и гениального персонажа Honkai: Star Rail.";
+            squishInfoTexts = new string[2]
+            {
+                "Куру~ вращалась уже",
+                "Герта куру~ вращалась уже",
+            };
+            squishInfoTB.Text = squishInfoTexts[0];
+            timesTB.Text = "раз";
+            squishButtonTexts = new string[2]
+            {
+                "Вращать куру~!",
+                "Куру куру~!",
+            };
+            squishButton.Content = squishButtonTexts[0];
+            pcRepoTB.Text = "GitHub PC репозиторий:";
+            siteRepoTB.Text = "GitHub репозиторий сайта:";
+        }
         private void refreshDynamicTexts()
         {
             squishButton.Content = squishButtonTexts[(new Random()).Next(0,2)];
@@ -500,7 +493,6 @@ namespace KuruKuruClicker
         {
             Process.Start(new ProcessStartInfo("https://github.com/duiqt/herta.kuru"));
         }
-
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             SettingsPage settingPage = new SettingsPage(Settings.Default.TextLanguage, Settings.Default.AudioLanguage);
@@ -510,11 +502,11 @@ namespace KuruKuruClicker
             ModlaPage.Content = settingPage;
         }
 
+
         private void SettingPage_AudioLanguageChanged(int audioIndex)
         {
             SelectAudioLanguage(audioIndex);
         }
-
         private void SettingPage_TextLanguageChanged(int languageIndex)
         {
             ChangeLanguage(languageIndex);
