@@ -61,6 +61,33 @@ namespace KuruKuruClicker.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream _1转圈圈 {
+            get {
+                return ResourceManager.GetStream("1转圈圈", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream _2转圈圈咯 {
+            get {
+                return ResourceManager.GetStream("2转圈圈咯", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream _3要坏掉了 {
+            get {
+                return ResourceManager.GetStream("3要坏掉了", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на {
         ///    &quot;contributors&quot;: [
         ///        {
