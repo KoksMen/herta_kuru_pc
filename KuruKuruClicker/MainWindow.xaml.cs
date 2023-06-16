@@ -26,10 +26,13 @@ namespace KuruKuruClicker
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         static string hertaAudioFolder = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\KuruKuruClicker\audio";
-        static string hertaKuruToAudio = System.IO.Path.Combine(hertaAudioFolder, "kuruto.wav");
-        static string hertaKuruRingAudio = System.IO.Path.Combine(hertaAudioFolder, "kuru1.wav");
-        static string hertaKuruKuruAudio = System.IO.Path.Combine(hertaAudioFolder, "kuru2.wav");
-        static string[] hertaAudio = new string[3] { hertaKuruToAudio, hertaKuruRingAudio, hertaKuruKuruAudio };
+        static string hertaKuruToAudioJA = System.IO.Path.Combine(hertaAudioFolder, "kuruto.wav");
+        static string hertaKuruRingAudioJA = System.IO.Path.Combine(hertaAudioFolder, "kuru1.wav");
+        static string hertaKuruKuruAudioJA = System.IO.Path.Combine(hertaAudioFolder, "kuru2.wav");
+        static string hertaKuruToAudioCN = System.IO.Path.Combine(hertaAudioFolder, "1转圈圈.wav");
+        static string hertaKuruRingAudioCN = System.IO.Path.Combine(hertaAudioFolder, "2转圈圈咯.wav");
+        static string hertaKuruKuruAudioCN = System.IO.Path.Combine(hertaAudioFolder, "3要坏掉了.wav");
+        static string[] hertaAudio = new string[3];
 
         static string jsonCreditsFolderPC = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\KuruKuruClicker\CreditsPC";
         static string jsonCreditsFolderWeb = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\KuruKuruClicker\CreditsWeb";
@@ -37,7 +40,6 @@ namespace KuruKuruClicker
         static string jsonCreditsWeb = System.IO.Path.Combine(jsonCreditsFolderWeb, "credits.web.json");
 
 
-        private bool firstStart = true;
         private bool firstSquish = true;
 
         private int count;
@@ -67,7 +69,19 @@ namespace KuruKuruClicker
             ImageBehavior.SetAnimatedSource(HertaBackgroundGif, hertaImage);
 
             ChangeLanguage(Settings.Default.TextLanguage);
-            firstStart = false;
+            SelectAudioLanguage(Settings.Default.AudioLanguage);
+        }
+
+        private void SelectAudioLanguage(int audioLanguage)
+        {
+            if (audioLanguage == 0)
+            {
+                hertaAudio = new string[3] { hertaKuruToAudioJA, hertaKuruRingAudioJA, hertaKuruKuruAudioJA }; 
+            }
+            else if (audioLanguage == 1)
+            {
+                hertaAudio = new string[3] { hertaKuruToAudioCN, hertaKuruRingAudioCN, hertaKuruKuruAudioCN }; 
+            }
         }
 
         private static void LoadAudioFiles()
@@ -79,11 +93,12 @@ namespace KuruKuruClicker
                     Directory.CreateDirectory(hertaAudioFolder);
                 }
                 string[] files = Directory.GetFiles(hertaAudioFolder);
-                if (!files.Contains("kuru1.wav") || !files.Contains("kuru2.wav") || !files.Contains("kuruto.wav"))
+                if (!files.Contains("kuru1.wav") || !files.Contains("kuru2.wav") || !files.Contains("kuruto.wav") ||
+                    !files.Contains("1转圈圈.wav") || !files.Contains("2转圈圈咯.wav") || !files.Contains("3要坏掉了.wav"))
                 {
                     using (Stream waveFile = Properties.Resources.kuruto)
                     {
-                        using (var fileStream = new FileStream(hertaKuruToAudio, FileMode.Create, FileAccess.Write))
+                        using (var fileStream = new FileStream(hertaKuruToAudioJA, FileMode.Create, FileAccess.Write))
                         {
                             waveFile.CopyTo(fileStream);
                         }
@@ -91,7 +106,7 @@ namespace KuruKuruClicker
 
                     using (Stream waveFile = Properties.Resources.kuru1)
                     {
-                        using (var fileStream = new FileStream(hertaKuruRingAudio, FileMode.Create, FileAccess.Write))
+                        using (var fileStream = new FileStream(hertaKuruRingAudioJA, FileMode.Create, FileAccess.Write))
                         {
                             waveFile.CopyTo(fileStream);
                         }
@@ -99,11 +114,36 @@ namespace KuruKuruClicker
 
                     using (Stream waveFile = Properties.Resources.kuru2)
                     {
-                        using (var fileStream = new FileStream(hertaKuruKuruAudio, FileMode.Create, FileAccess.Write))
+                        using (var fileStream = new FileStream(hertaKuruKuruAudioJA, FileMode.Create, FileAccess.Write))
                         {
                             waveFile.CopyTo(fileStream);
                         }
                     }
+
+                    using (Stream waveFile = Properties.Resources._1转圈圈)
+                    {
+                        using (var fileStream = new FileStream(hertaKuruToAudioCN, FileMode.Create, FileAccess.Write))
+                        {
+                            waveFile.CopyTo(fileStream);
+                        }
+                    }
+
+                    using (Stream waveFile = Properties.Resources._2转圈圈咯)
+                    {
+                        using (var fileStream = new FileStream(hertaKuruRingAudioCN, FileMode.Create, FileAccess.Write))
+                        {
+                            waveFile.CopyTo(fileStream);
+                        }
+                    }
+
+                    using (Stream waveFile = Properties.Resources._3要坏掉了)
+                    {
+                        using (var fileStream = new FileStream(hertaKuruKuruAudioCN, FileMode.Create, FileAccess.Write))
+                        {
+                            waveFile.CopyTo(fileStream);
+                        }
+                    }
+
                 }
             }
             catch (Exception e)
@@ -264,21 +304,12 @@ namespace KuruKuruClicker
 
         private void languageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!firstStart)
-            {
-                int selectedIndex = languageComboBox.SelectedIndex;
-                ChangeLanguage(selectedIndex);
-                Settings.Default.TextLanguage = selectedIndex;
-            }
+            
             
         }
 
         private void ChangeLanguage(int languageIndex)
         {
-            if (firstStart)
-            {
-                languageComboBox.SelectedIndex = languageIndex;
-            }
             switch (languageIndex)
             {
                 case 0:
@@ -470,5 +501,23 @@ namespace KuruKuruClicker
             Process.Start(new ProcessStartInfo("https://github.com/duiqt/herta.kuru"));
         }
 
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            SettingsPage settingPage = new SettingsPage(Settings.Default.TextLanguage, Settings.Default.AudioLanguage);
+            settingPage.SettingsPageClosed += ModalPage_Closed;
+            settingPage.TextLanguageChanged += SettingPage_TextLanguageChanged;
+            settingPage.AudioLanguageChanged += SettingPage_AudioLanguageChanged;
+            ModlaPage.Content = settingPage;
+        }
+
+        private void SettingPage_AudioLanguageChanged(int audioIndex)
+        {
+            SelectAudioLanguage(audioIndex);
+        }
+
+        private void SettingPage_TextLanguageChanged(int languageIndex)
+        {
+            ChangeLanguage(languageIndex);
+        }
     }
 }
